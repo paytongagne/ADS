@@ -1,3 +1,5 @@
+#uses hashmap, all lookups are ~O(1)
+#for counting number of drivers with points, uses array, O(1) lookup time
 class DriversLiscenseSystem:
     def __init__(self):
         self.index = {}
