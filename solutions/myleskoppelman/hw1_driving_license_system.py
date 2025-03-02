@@ -3,42 +3,44 @@ sys.path.append(".")
 
 from ads_libs.io_parse import convert_file_to_commands
 
-
-class LicenseSystem:
+class PointBasedManagementSystem:
     def __init__(self):
-        self.drivers = {}  # Stores drivers and their points
-        # Tracks number of drivers per points
-        self.points_count = {i: 0 for i in range(16)} # O(16)
-
-    def nuevo(self, dni): # O(1)
-        if dni in self.drivers:
+        self.data = {}
+        self.arr = [0 for _ in range(16)]
+    
+    def nuevo(self, key):
+        if key in self.data:
             raise ValueError("Conductor duplicado")
-        self.drivers[dni] = 15
-        self.points_count[15] += 1
-
-    def quitar(self, dni, puntos): # O(1)
-        if dni not in self.drivers:
+        self.data[key] = 15
+        self.arr[15]+= 1
+        
+    def consultar(self, key):
+        if key not in self.data:
+            print(f"Puntos de {key}: {self.data[key]}")
+        else:
+            return self.data[key]
+         
+    def quitar(self, key, new_value):
+        if key in self.data:
+            if self.data[key] < new_value:
+                self.arr[self.data[key]]-= 1
+                self.data[key] = 0
+                self.arr[0] += 1
+            else:
+                v = self.data[key] - new_value
+                self.arr[self.data[key]]-= 1
+                self.data[key] = v
+                self.arr[v] += 1
+        else:
             raise ValueError("Conductor inexistente")
-
-        current_points = self.drivers[dni]
-        self.points_count[current_points] -= 1
-        new_points = max(0, current_points - puntos)
-        self.drivers[dni] = new_points
-        self.points_count[new_points] += 1
-
-    def consultar(self, dni): # O(1)
-        if dni not in self.drivers:
-            raise ValueError("Conductor inexistente")
-        return self.drivers[dni]
-
-    def cuantos_con_puntos(self, puntos): # O(1)
-        if puntos < 0 or puntos > 15:
+        
+    def cuantos_con_puntos(self, value):
+        if 0 > value or 15 < value:
             raise ValueError("Puntos no validos")
-        return self.points_count[puntos]
-
-
-def process_operations(operations): # O(p), p is the number of operaitons
-    system = LicenseSystem()
+        return self.arr[value]
+        
+def process_operations(operations):
+    system = PointBasedManagementSystem()
     output = []
 
     for op in operations:
@@ -81,3 +83,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    
+    
