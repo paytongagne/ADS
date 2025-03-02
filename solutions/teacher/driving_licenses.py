@@ -8,15 +8,15 @@ class LicenseSystem:
     def __init__(self):
         self.drivers = {}  # Stores drivers and their points
         # Tracks number of drivers per points
-        self.points_count = {i: 0 for i in range(16)}
+        self.points_count = {i: 0 for i in range(16)} # O(16)
 
-    def nuevo(self, dni):
+    def nuevo(self, dni): # O(1)
         if dni in self.drivers:
             raise ValueError("Conductor duplicado")
         self.drivers[dni] = 15
         self.points_count[15] += 1
 
-    def quitar(self, dni, puntos):
+    def quitar(self, dni, puntos): # O(1)
         if dni not in self.drivers:
             raise ValueError("Conductor inexistente")
 
@@ -26,18 +26,18 @@ class LicenseSystem:
         self.drivers[dni] = new_points
         self.points_count[new_points] += 1
 
-    def consultar(self, dni):
+    def consultar(self, dni): # O(1)
         if dni not in self.drivers:
             raise ValueError("Conductor inexistente")
         return self.drivers[dni]
 
-    def cuantos_con_puntos(self, puntos):
+    def cuantos_con_puntos(self, puntos): # O(1)
         if puntos < 0 or puntos > 15:
             raise ValueError("Puntos no validos")
         return self.points_count[puntos]
 
 
-def process_operations(operations):
+def process_operations(operations): # O(p), p is the number of operaitons
     system = LicenseSystem()
     output = []
 
