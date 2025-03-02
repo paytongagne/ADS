@@ -34,6 +34,10 @@ Each test case generates output based on the requested operations:
 Each test case ends with a line containing `---`.
 If an operation results in an error, the output is `ERROR`, and no further output is generated for that operation.
 
+## Extra
+
+For each student and professor, it must be possible to store the name, surname and a telephone number.
+
 ## Example
 ### Input
 ```
