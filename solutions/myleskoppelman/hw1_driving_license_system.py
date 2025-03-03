@@ -4,23 +4,23 @@ sys.path.append(".")
 from ads_libs.io_parse import convert_file_to_commands
 
 class PointBasedManagementSystem:
-    def __init__(self):
+    def __init__(self): # O(1)
         self.data = {}
         self.arr = [0 for _ in range(16)]
     
-    def nuevo(self, key):
+    def nuevo(self, key): # hashmap insert is O(1) 
         if key in self.data:
             raise ValueError("Conductor duplicado")
         self.data[key] = 15
         self.arr[15]+= 1
         
-    def consultar(self, key):
+    def consultar(self, key): # Hashmap get also O(1)
         if key not in self.data:
             print(f"Puntos de {key}: {self.data[key]}")
         else:
             return self.data[key]
          
-    def quitar(self, key, new_value):
+    def quitar(self, key, new_value): # O(1)
         if key in self.data:
             if self.data[key] < new_value:
                 self.arr[self.data[key]]-= 1
@@ -34,7 +34,7 @@ class PointBasedManagementSystem:
         else:
             raise ValueError("Conductor inexistente")
         
-    def cuantos_con_puntos(self, value):
+    def cuantos_con_puntos(self, value): # by using an array to track the number of ppl with x points, this function is O(1)
         if 0 > value or 15 < value:
             raise ValueError("Puntos no validos")
         return self.arr[value]
