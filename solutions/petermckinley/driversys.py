@@ -6,13 +6,13 @@ class DriversLiscenseSystem:
         self.arr = [0] * 16
     
     def nuevo(self, dni):
-        if dni in self.index:
+        if dni in self.index:#hashmap, O(1)
             return ("ERROR: Conductor duplicado")
         self.index[dni] = 15
         self.arr[15] += 1
     
     def quitar(self, dni, puntos):
-        if dni not in self.index:
+        if dni not in self.index:#hashmap
             return ("ERROR: Conductor inexistente")
         self.arr[self.index[dni]] -= 1
         self.index[dni] -= puntos
@@ -25,12 +25,12 @@ class DriversLiscenseSystem:
         self.arr[self.index[dni]] += 1
 
     def consultar(self, dni):
-        if dni not in self.index:
+        if dni not in self.index:#hashmap
             return ("ERROR: Conductor inexistente")
         return ("Puntos de " + str(dni) + ": " + str(self.index[dni]))
     
     def cuantos_con_puntos(self, puntos):
-        if puntos < 0 or puntos > 15:
+        if puntos < 0 or puntos > 15:#O(16), keeps track in array 
             return ("ERROR: Puntos no válidos")
         return ("Con " + str(puntos) + " puntos hay " + str(self.arr[puntos]))
 
