@@ -61,8 +61,6 @@ class School:
                 instructorobj = people
                 break
         
-        if isinstance(instructorobj, str):
-            return []
         if instructorobj is None:
             return []
 
