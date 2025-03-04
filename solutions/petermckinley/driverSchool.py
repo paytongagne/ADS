@@ -1,5 +1,3 @@
-import bisect
-
 class School:
     def __init__(self):
         self.allStudents = {} #student : instructor
@@ -61,13 +59,16 @@ class School:
                 instructorobj = people
                 break
         
+        if isinstance(instructorobj, str):
+            return []
         if instructorobj is None:
             return []
 
         temp_list = []
         for students in instructorobj.students:
             if instructorobj.students[students] >= int(points):
-                bisect.insort(temp_list, students)
+                temp_list.append(students)
+        temp_list.sort()
         return temp_list
     
     def aprobar(self, student):
