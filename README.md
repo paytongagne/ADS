@@ -106,7 +106,6 @@ The code of the exercises is going to be evalauted considering this standard:
 - Verify that the code adheres to the specified requirements or design specifications.
 
 ### Scale 
-Certainly! Here's the information converted to Markdown format:
 
 **5: Excellent**
 
