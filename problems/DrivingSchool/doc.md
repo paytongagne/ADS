@@ -1,6 +1,5 @@
-# Driving School System
+# Driving School
 
-## Description
 The goal is to design an ADT to manage students under different instructors in a driving school. Both students and instructors are identified by their names, which are strings. The following operations should be supported:
 
 ### Operations
@@ -11,6 +10,9 @@ The goal is to design an ADT to manage students under different instructors in a
 - **actualizar(A, N)**: Increases student `A`'s score by `N`. If `A` is not enrolled, a domain error is thrown with the message: `El alumno A no esta matriculado.`
 - **examen(P, N)**: Returns a list of students under instructor `P` who qualify for the exam (students with a score of `N` or higher), sorted alphabetically.
 - **aprobar(A)**: Removes student `A` from the driving school upon passing the exam. All information about `A` is deleted. If `A` is not enrolled, a domain error is thrown with the message: `El alumno A no esta matriculado.`
+
+💡 Profesors and Studentes are uniquely identified by their name (a string).
+
 
 ## Implementation Requirements
 - Select an appropriate data structure to store the information.

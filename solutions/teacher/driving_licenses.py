@@ -1,5 +1,3 @@
-import sys
-sys.path.append(".")
 
 from ads_libs.io_parse import convert_file_to_commands
 

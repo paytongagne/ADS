@@ -1,10 +1,10 @@
-# **Points-Based Driving License Management System**  
+# Driving Licenses
 
 The **DGT (Traffic Authority)** has requested our help in managing a **points-based driving license** system. Drivers are uniquely identified by their **DNI (National ID)**, and their point balance ranges from **0 to 15 points, inclusive**.  
 
 The system must be implemented as an **Abstract Data Type (ADT)** with the following operations:  
 
-### **Operations:**  
+## Operations
 - **`nuevo(dni)`**: Adds a new driver identified by their `dni` (a string) with **15 points**.  
   - If the `dni` is already registered, it throws a **domain error** with the message **"Conductor duplicado"** (Duplicate driver).  
 
@@ -20,7 +20,7 @@ The system must be implemented as an **Abstract Data Type (ADT)** with the follo
 
 ---
 
-### **Implementation Requirements:**  
+## Implementation Requirements
 The operations should be **as efficient as possible**. Therefore, selecting an appropriate **data representation** for the ADT is crucial. The operations must be implemented efficiently, and their **complexity should be justified**.  
 
 💡 **Important:**  
@@ -29,7 +29,7 @@ The operations should be **as efficient as possible**. Therefore, selecting an a
 
 ---
 
-### **Input Format:**  
+## Input Format 
 The input consists of multiple test cases.  
 Each test case contains a series of **operations**, one per line, formatted as:  
 `operation_name argument(s)`  
@@ -38,7 +38,7 @@ Each test case contains a series of **operations**, one per line, formatted as:
 
 ---
 
-### **Output Format:**  
+## Output Format
 For each test case, the required output should be generated based on the operations:  
 
 - **`consultar(dni)`**: Prints  
