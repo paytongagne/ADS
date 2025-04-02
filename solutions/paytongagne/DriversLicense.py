@@ -8,6 +8,7 @@ class PointBasedManagementSystem:
         # Initializes storage for driver points and count array for points distribution
         self.data = {}
         self.arr = [0 for _ in range(16)]
+        # Complexity: O(1)
     
     def nuevo(self, key):
         # Registers a new driver with maximum points, raises error if driver already exists
@@ -15,12 +16,14 @@ class PointBasedManagementSystem:
             raise ValueError("Conductor duplicado")
         self.data[key] = 15
         self.arr[15] += 1
+        # Complexity: O(1)
         
     def consultar(self, key):
         # Returns the current points of a driver, raises error if driver doesn't exist
         if key not in self.data:
             raise ValueError("Conductor inexistente")
         return self.data[key]
+        # Complexity: O(1)
          
     def quitar(self, key, new_value):
         # Deducts points from a driver, adjusts points array accordingly, raises error if driver doesn't exist
@@ -32,12 +35,14 @@ class PointBasedManagementSystem:
         self.arr[current_points] -= 1
         self.arr[new_points] += 1
         self.data[key] = new_points
+        # Complexity: O(1)
         
     def cuantos_con_puntos(self, value):
         # Returns the number of drivers with a specific points value, raises error if points are out of valid range
         if not (0 <= value <= 15):
             raise ValueError("Puntos no validos")
         return self.arr[value]
+        # Complexity: O(1)
         
 def process_operations(operations):
     system = PointBasedManagementSystem()
@@ -59,8 +64,8 @@ def process_operations(operations):
                 output.append(f"Con {parts[1]} puntos hay {count}")
         except ValueError as e:
             output.append(f"ERROR: {e}")
-
     return output
+    # Overall Complexity: O(n), where n is the number of operations
 
 def main():
     if len(sys.argv) < 2:
@@ -78,6 +83,7 @@ def main():
             test_case = []
         else:
             test_case.append(line)
+    # Overall Complexity: O(n), where n is the number of lines in the input file
 
 if __name__ == "__main__":
     main()
